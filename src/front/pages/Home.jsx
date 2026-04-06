@@ -1,52 +1,87 @@
-import React, { useEffect } from "react"
-import rigoImageUrl from "../assets/img/rigo-baby.jpg";
-import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
-
+import React from "react";
+import logoApp from "../assets/Logo Baby Zzync 1 - vers blanca.png";
 export const Home = () => {
+  return (
+    <div className="bg-registro">
+      <div className="container d-flex justify-content-center align-items-center min-vh-100">
+        
+        {/* Card principal con overflow hidden para que el header respete el redondeo */}
+        <div className="card shadow-sm border-0" style={{ maxWidth: "450px", width: "100%", borderRadius: "20px", overflow: "hidden" }}>
+          
+          {/* Header Centrado con posición relativa */}
+          <div className="d-flex align-items-center justify-content-center p-3  position-relative" 
+               style={{ backgroundColor: "var(--color-primario)", minHeight: "80px" }}>
+            
+            {/* Logo centrado */}
+            <img 
+              src={logoApp} 
+              alt="Logo Baby Zzzync" 
+              style={{ width: "150px", height: "auto" }} 
+            />
+            {/* Icono de menú de hamburguesa (usando FontAwesome si lo tienes, o un emoji si no) */}
+            <i className="fas fa-bars fa-lg text-muted" style={{ cursor: "pointer" }}></i>
+          </div>
 
-	const { store, dispatch } = useGlobalReducer()
+          {/* Menú de Botones */}
+          <div className="d-flex flex-column gap-4 p-4">
+            
+            {/* Botón 1: MI FAMILIA */}
+            <button className="btn w-100 p-4 text-center border shadow-sm" style={btnStyle}>
+              <i className="fas fa-users mb-2" style={iconStyle}></i>
+              <h5 className="m-0 fw-bold">MI FAMILIA</h5>
+              <small className="text-muted text-uppercase">(Ruta para crear rutina)</small>
+            </button>
 
-	const loadMessage = async () => {
-		try {
-			const backendUrl = import.meta.env.VITE_BACKEND_URL
+            {/* Botón 2: CUIDADOR/A */}
+            <button className="btn w-100 p-4 text-center border shadow-sm" style={btnStyle}>
+              <i className="fas fa-user-friends mb-2" style={iconStyle}></i>
+              <h5 className="m-0 fw-bold">CUIDADOR/A</h5>
+              <small className="text-muted text-uppercase">(Aqui se gestiona Rutina)</small>
+            </button>
 
-			if (!backendUrl) throw new Error("VITE_BACKEND_URL is not defined in .env file")
+            {/* Botón 3: ZZZYNC */}
+            <button className="btn w-100 p-4 text-center border shadow-sm" style={btnStyle}>
+              <i className="fas fa-baby mb-2" style={iconStyle}></i>
+              <h5 className="m-0 fw-bold">ZZZYNC</h5>
+              <small className="text-muted text-uppercase">(Visualizacion de progreso)</small>
+            </button>
 
-			const response = await fetch(backendUrl + "/api/hello")
-			const data = await response.json()
+          </div>
 
-			if (response.ok) dispatch({ type: "set_hello", payload: data.message })
+        
 
-			return data
+        </div>
+      </div>
+      
+    </div>
+  );
+};
 
-		} catch (error) {
-			if (error.message) throw new Error(
-				`Could not fetch the message from the backend.
-				Please check if the backend is running and the backend port is public.`
-			);
-		}
+// Estilos sencillos en línea para que no tengas que tocar el CSS
+const cardStyle = {
+  backgroundColor: "white",
+  borderRadius: "15px",
+  transition: "all 0.2s ease",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  border: "1px solid #eee",
+  cursor: "pointer"
+};
 
-	}
+const btnStyle = {
+    backgroundColor: "var(--color-fondoBotones)", // Usa tu variable de CSS
+    borderRadius: "15px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    border: "none", // Sin bordes para un look más limpio
+    transition: "all 0.2s ease"
+  };
 
-	useEffect(() => {
-		loadMessage()
-	}, [])
-
-	return (
-		<div className="text-center mt-5">
-			<h1 className="display-4">Hello Rigo!!</h1>
-			<p className="lead">
-				<img src={rigoImageUrl} className="img-fluid rounded-circle mb-3" alt="Rigo Baby" />
-			</p>
-			<div className="alert alert-info">
-				{store.message ? (
-					<span>{store.message}</span>
-				) : (
-					<span className="text-danger">
-						Loading message from the backend (make sure your python 🐍 backend is running)...
-					</span>
-				)}
-			</div>
-		</div>
-	);
-}; 
+const iconStyle = {
+  fontSize: "1.5rem",
+  color: "var(--color-primario)"
+};
