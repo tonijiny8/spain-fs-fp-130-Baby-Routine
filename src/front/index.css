@@ -1,13 +1,44 @@
 :root {
   --color-primario: #480CA8;
   --color-secundario: #7209B7;
-  
   --color-alimentacion: #480CA8;
   --color-descanso: #4CC9F0;
-  --color-cambio-pañal: #d65445;
-  --color-medicacion: #edd03e;
-  --color-tiempo-de-ejercicio: #57d23b;
-
-  --color-fondo: #f4f4f4;
+  --color-cambio-pañal: #D65445;
+  --color-medicacion: #EDD03E;
+  --color-tiempo-de-ejercicio: #57D23B;
+  --color-fondo: #c9c9c9;
   --color-texto: #333333;
+}
+
+.bg-registro {
+  background-color: var(--color-fondo); 
+  min-height: 100vh; /* Esto asegura que el color cubra toda la altura de la pantalla */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estilos de inputs */
+.input-line {
+  border: none !important;
+  border-bottom: 1px solid #ccc !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+}
+
+
+
+.profile-circle {
+  width: 80px;
+  height: 80px;
+  border: 2px dashed var(--color-primario);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  color: var(--color-primario);
 }
