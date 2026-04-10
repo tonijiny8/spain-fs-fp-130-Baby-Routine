@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import logoApp from "../assets/Logo Baby Zzync 1 - vers blanca.png";
 export const Home = () => {
   return (
@@ -24,11 +26,13 @@ export const Home = () => {
           <div className="d-flex flex-column gap-4 p-4">
 
             {/* Botón 1: MI FAMILIA */}
+            <Link to="/familia" style={{ textDecoration: "none" }}> 
             <button className="btn w-100 p-4 text-center border shadow-sm" style={btnStyle}>
               <i className="fas fa-users mb-2" style={iconStyle}></i>
               <h5 className="m-0 fw-bold">MI FAMILIA</h5>
               <small className="text-muted text-uppercase">(Ruta para crear rutina)</small>
             </button>
+            </Link>
 
             {/* Botón 2: CUIDADOR/A */}
             <button className="btn w-100 p-4 text-center border shadow-sm" style={btnStyle}>
