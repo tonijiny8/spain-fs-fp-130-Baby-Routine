@@ -46,7 +46,6 @@ export const FamiliaRutina = () => {
     
     let listaNueva = [];
 
-    
     for (let i = 0; i < list.length; i++) {
         let elemento = list[i];
         if (elemento.id === indexId) {
